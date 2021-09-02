@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Client } = require("@notionhq/client");
 
 const DATABASE = process.env.NOTION_DATABASE_ID;
-const TOKEN = process.env.NOTION_TOKEN
+const TOKEN = process.env.NOTION_TOKEN;
 
 // Init client
 const notion = new Client({
@@ -10,12 +10,12 @@ const notion = new Client({
 });
 
 module.exports = async function getDataBase() {
-  const payload = {
-    path: `databases/${DATABASE}/query`,
-    method: "POST",
-  };
-
-  const { results } = await notion.request(payload);
-
-  console.log(results)
+  (async () => {
+    const databaseId = DATABASE;
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: { property: "status", select: { equals: "publish" } },
+    });
+    console.log(response);
+  })();
 };
