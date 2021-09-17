@@ -10,5 +10,10 @@
   [tutorial](https://www.youtube.com/watch?v=pKN0ppku7ak&list=LL&index=2&t=904s)
 
 
+## Endpoints -
+  * /database
+  * /mainpage
+  * /block-children
+
   ## UML
   ![UML](MVC.png)
