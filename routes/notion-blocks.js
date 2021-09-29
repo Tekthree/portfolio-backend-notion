@@ -12,12 +12,10 @@ const notion = new Client({
 });
 
 module.exports = async function getBlockChildren() {
-  (async () => {
-    const blockId = BLOCKID;
-    const response = await notion.blocks.children.list({
-      block_id: blockId,
-      page_size: 50,
-    });
-    console.log(response);
-  })();
+  const blockId = BLOCKID;
+  const response = await notion.blocks.children.list({
+    block_id: blockId,
+    page_size: 50,
+  });
+  return response
 };

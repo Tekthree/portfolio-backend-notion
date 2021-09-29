@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 require("dotenv").config();
 const { Client } = require("@notionhq/client");
@@ -12,9 +12,9 @@ const notion = new Client({
 });
 
 module.exports = async function getMainPage() {
-  (async () => {
-    const pageId = PAGEID;
-    const response = await notion.pages.retrieve({ page_id: pageId });
-    console.log(response);
-  })();
+  const pageId = PAGEID;
+  const response = await notion.pages.retrieve({ page_id: pageId });
+  console.log(response);
+
+  return response;
 };

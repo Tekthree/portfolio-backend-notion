@@ -10,12 +10,11 @@ const notion = new Client({
 });
 
 module.exports = async function getDataBase() {
-  (async () => {
-    const databaseId = DATABASE;
-    const response = await notion.databases.query({
-      database_id: databaseId,
-      filter: { property: "status", select: { equals: "publish" } },
-    });
-    console.log(response);
-  })();
+  const databaseId = DATABASE;
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: { property: "status", select: { equals: "publish" } },
+  });
+  
+  return response;
 };
